@@ -1,7 +1,9 @@
-# RVA-CLI
+# RVA-CLI [![GitHub issues](https://img.shields.io/github/issues/Filiosoft/rva-cli.svg)](https://github.com/Filiosoft/rva-cli/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Filiosoft/rva-cli/master/LICENSE) [![npm](https://img.shields.io/npm/v/@filiosoft/rva-cli.svg)](https://www.npmjs.com/package/@filiosoft/rva-cli)
+
 AWS S3 Review Apps Tools CLI
 
 _Docs incomplete_
+
 ## Usage
 ```
   Usage: rva [options]
