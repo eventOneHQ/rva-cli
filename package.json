@@ -4,7 +4,7 @@
   "description": "AWS S3 Review Apps Tools CLI",
   "main": "rva.js",
   "bin": {
-    "rva": "rva.js"
+    "rva": "bin/rva.js"
   },
   "scripts": {
     "postversion": "git push && git push --tags"
@@ -19,6 +19,8 @@
   "dependencies": {
     "aws-sdk": "^2.62.0",
     "cli-color": "^1.2.0",
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "prompt": "^1.0.0",
+    "prompt-confirm": "^1.1.1"
   }
 }

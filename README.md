@@ -6,37 +6,37 @@ _Docs incomplete_
 
 ## Usage
 ```
-  Usage: rva [options]
 
-  Example: rva -n upgrade-to-angular-2
+  Usage: rva [options] [command]
+
+  Example: rva start upgrade-to-angular-2
+
+
+  Commands:
+
+    start [name]  start a S3 review app
+    stop [name]   stop a S3 review app
+    init [baseName]  initialize a project with S3 review apps
+    help [cmd]    display help for [cmd]
 
   Options:
 
-    -h, --help         output usage information
-    -V, --version      output the version number
-    -n, --name <name>  name of the review app to create or delete
-    -d, --delete       delete review app
+    -h, --help     output usage information
+    -V, --version  output the version number
 
 ```
 ### Configuration
-Before using RVA, you need to create a `rva.json` file in your root project folder and set two environment variables.
+Before using RVA, you need to create a `rva.json` file in your root project folder and set two environment variables. You can do this by running the following.
 
-Example rva.json:
-```javascript
-{
-    "baseName": "review.example.com"
-}
+```
+$ rva init [your_base_review_app_name]
 ```
 
-After creating the `rva.json`, you will need to set the following two environment variables.
-
-- `AWS_SECRET_ACCESS_KEY`
-- `AWS_ACCESS_KEY_ID`
 ### Create Review App
 To create an AWS S3 bucket for a static website review app on a git branch called `upgrade-to-angular-2`, run the following.
 
 ```
-$ rva -n upgrade-to-angular-2
+$ rva start upgrade-to-angular-2
 ```
 
 That will create the S3 bucket, set the bucket policy, and enable static website hosting. You will then be able to browse to the following to view the review app:
@@ -46,7 +46,7 @@ That will create the S3 bucket, set the bucket policy, and enable static website
 To delete the S3 review app you created above, run the following.
 
 ```
-$ rva -n upgrade-to-angular-2 -d
+$ rva stop upgrade-to-angular-2
 ```
 
 This will delete app files in the bucket and the bucket itself.
