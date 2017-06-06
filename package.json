@@ -1,0 +1,21 @@
+{
+  "name": "rva-cli",
+  "version": "1.0.0",
+  "description": "AWS S3 Review Apps Tools CLI",
+  "main": "rva.js",
+  "bin": {
+    "rva": "rva.js"
+  },
+  "repository": "filiosoft/rva-cli",
+  "bugs": {
+    "url": "https://github.com/filiosoft/rva-cli/issues",
+    "email": "team@filiosoft.com"
+  },
+  "author": "Filiosoft <Team@Filiosoft.com>",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.62.0",
+    "cli-color": "^1.2.0",
+    "commander": "^2.9.0"
+  }
+}
