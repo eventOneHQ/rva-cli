@@ -1,10 +1,13 @@
 {
   "name": "rva-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "AWS S3 Review Apps Tools CLI",
   "main": "rva.js",
   "bin": {
     "rva": "rva.js"
+  },
+  "scripts": {
+    "postversion": "git push && git push --tags"
   },
   "repository": "filiosoft/rva-cli",
   "bugs": {
