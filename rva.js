@@ -26,8 +26,8 @@ function readModuleFile(path, callback) {
 
 program
   .version(pkg.version)
-  .option('-n, --name <name>', 'Name of the review app. ')
-  .option('-d, --delete', 'Remove review app. ')
+  .option('-n, --name <name>', 'name of the review app to create or delete ')
+  .option('-d, --delete', 'delete review app ')
   .parse(process.argv);
 
 checkEnv();
@@ -70,7 +70,7 @@ if (fs.existsSync(configFile) && nameType) {
                   // put website success
                   console.log(res);
 
-                  console.log(`Setup complete. Visit http://${program.name+'-'+config.baseName}.s3-website-us-east-1.amazonaws.com`)
+                  console.log(`Setup complete. Visit http://${program.name+'.'+config.baseName}.s3-website-us-east-1.amazonaws.com`)
                 })
                 .catch((err) => {
                   // catch put website
