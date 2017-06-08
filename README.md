@@ -4,6 +4,14 @@ AWS S3 Review Apps Tools CLI
 
 _Docs incomplete_
 
+## Installation
+
+To install RVA-CLI, run the following:
+
+```
+$ npm i -g @filiosoft/rva-cli
+```
+
 ## Usage
 ```
 
