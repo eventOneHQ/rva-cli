@@ -5,7 +5,7 @@ const program = require('commander');
 const fs = require('fs');
 const deleteBucket = require('../lib/deleteBucket');
 
-const configFile = 'rva.json';
+const configFile = path.resolve('rva.json');
 
 program
   .parse(process.argv);

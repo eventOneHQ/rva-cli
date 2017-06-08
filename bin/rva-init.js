@@ -5,8 +5,10 @@ const program = require('commander');
 const fs = require('fs');
 const prompt = require('prompt');
 const PromptConfirm = require('prompt-confirm');
+const path = require('path');
 
-const configFile = 'rva.json';
+const configFile = path.resolve('rva.json');
+
 let obj = {};
 
 program
@@ -31,7 +33,7 @@ function writeDoc(input) {
 }
 
 function writeJson(input) {
-  const configFile = 'rva.json';
+  const configFile = path.resolve('rva.json');
   if (fs.existsSync(configFile)) {
     console.log(clc.yellow('rva.json already exists in the current working directory. Overwrite?'));
 
@@ -44,7 +46,7 @@ function writeJson(input) {
       }
     });
   } else {
-    write(input);
+    writeDoc(input);
   }
 }
 

@@ -7,7 +7,7 @@ const createBucket = require('../lib/createBucket');
 const putPolicy = require('../lib/putPolicy');
 const putWebsite = require('../lib/putWebsite');
 
-const configFile = 'rva.json';
+const configFile = path.resolve('rva.json');
 
 program
   .parse(process.argv);
