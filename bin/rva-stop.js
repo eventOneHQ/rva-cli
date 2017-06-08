@@ -20,7 +20,7 @@ if (fs.existsSync(configFile) && nameType) {
 
     const config = JSON.parse(data);
 
-    console.log(`Stoping review app...`);
+    console.log('Stoping review app...');
     deleteBucket(config, appName)
       .then((res) => {
         console.log(`Review app ${res} stopped.`);

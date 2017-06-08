@@ -16,25 +16,17 @@ const nameType = typeof baseName === 'string';
 
 console.log('Initializing project with S3 review apps...');
 
-if (nameType) {
-  console.log(`Setting base name to ${baseName}`);
-  obj.baseName = baseName;
-  writeJson(obj);
-} else {
-  prompt.start();
-  const schema = {
-    properties: {
-      baseName: {
-        description: 'Base review app bucket name',
-        pattern: /^(?=.{1,254}$)((?=[a-z0-9-]{1,63}\.)(xn--+)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}$/i,
-        message: 'Base name must be a valid FQDN.',
-        required: true
-      }
+function write(input) {
+  const json = JSON.stringify(input);
+  fs.writeFile(configFile, json, 'utf8', (err) => {
+    if (err) {
+      return console.log(err);
     }
-  };
-  prompt.get(schema, function (err, result) {
-    obj.baseName = result.baseName;
-    writeJson(obj);
+    console.log(clc.yellow('\nPlease set the following environment variable: '));
+    console.log('AWS_SECRET_ACCESS_KEY');
+    console.log('AWS_ACCESS_KEY_ID');
+    console.log(clc.green('\nS3 review apps initialized!'));
+
   });
 }
 
@@ -56,16 +48,24 @@ function writeJson(input) {
   }
 }
 
-function write(input) {
-  const json = JSON.stringify(input);
-  fs.writeFile(configFile, json, 'utf8', (err) => {
-    if (err) {
-      return console.log(err);
+if (nameType) {
+  console.log(`Setting base name to ${baseName}`);
+  obj.baseName = baseName;
+  writeJson(obj);
+} else {
+  prompt.start();
+  const schema = {
+    properties: {
+      baseName: {
+        description: 'Base review app bucket name',
+        pattern: /^(?=.{1,254}$)((?=[a-z0-9-]{1,63}\.)(xn--+)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}$/i,
+        message: 'Base name must be a valid FQDN.',
+        required: true
+      }
     }
-    console.log(clc.yellow('\nPlease set the following environment variable: '));
-    console.log('AWS_SECRET_ACCESS_KEY');
-    console.log('AWS_ACCESS_KEY_ID');
-    console.log(clc.green('\nS3 review apps initialized!'));
-
+  };
+  prompt.get(schema, function (err, result) {
+    obj.baseName = result.baseName;
+    writeJson(obj);
   });
 }
