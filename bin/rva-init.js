@@ -16,7 +16,7 @@ const nameType = typeof baseName === 'string';
 
 console.log('Initializing project with S3 review apps...');
 
-function write(input) {
+function writeDoc(input) {
   const json = JSON.stringify(input);
   fs.writeFile(configFile, json, 'utf8', (err) => {
     if (err) {
@@ -38,7 +38,7 @@ function writeJson(input) {
     const confirm = new PromptConfirm('Overwrite rva.json?');
     confirm.ask(function (yes) {
       if (yes) {
-        write(input);
+        writeDoc(input);
       } else {
         console.log(clc.red('Initialization cancelled...'));
       }
