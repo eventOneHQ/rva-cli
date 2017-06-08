@@ -17,7 +17,7 @@ const nameType = typeof baseName === 'string';
 console.log('Initializing project with S3 review apps...');
 
 if (nameType) {
-  console.log(`Setting base name to ${baseName}`)
+  console.log(`Setting base name to ${baseName}`);
   obj.baseName = baseName;
   writeJson(obj);
 } else {
