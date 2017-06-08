@@ -6,6 +6,7 @@ const fs = require('fs');
 const createBucket = require('../lib/createBucket');
 const putPolicy = require('../lib/putPolicy');
 const putWebsite = require('../lib/putWebsite');
+const path = require('path');
 
 const configFile = path.resolve('rva.json');
 

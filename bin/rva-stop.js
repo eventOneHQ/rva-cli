@@ -4,6 +4,7 @@ const clc = require('cli-color');
 const program = require('commander');
 const fs = require('fs');
 const deleteBucket = require('../lib/deleteBucket');
+const path = require('path');
 
 const configFile = path.resolve('rva.json');
 
