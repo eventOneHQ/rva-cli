@@ -1,6 +1,6 @@
 {
   "name": "@filiosoft/rva-cli",
-  "version": "1.0.0-3",
+  "version": "1.0.0-4",
   "description": "AWS S3 Review Apps Tools CLI",
   "main": "rva.js",
   "bin": {
