@@ -64,6 +64,11 @@ if (nameType) {
         message: 'Base name must be a valid FQDN.',
         required: true
       },
+      publicFolder: {
+        description: 'Public folder to upload to S3',
+        required: true,
+        default: 'public',
+      },
       indexPage: {
         description: 'Static website index document',
         required: false,

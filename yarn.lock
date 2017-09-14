@@ -234,9 +234,20 @@ balanced-match@^0.4.1:
   version "0.4.2"
   resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
 
+balanced-match@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
+
 base64-js@^1.0.2:
   version "1.2.0"
   resolved "https://npm.filiosoft.com/base64-js/-/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
+
+brace-expansion@^1.0.0:
+  version "1.1.8"
+  resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.8.tgz#c07b211c7c952ec1f8efd51a77ef0d1d3990a292"
+  dependencies:
+    balanced-match "^1.0.0"
+    concat-map "0.0.1"
 
 brace-expansion@^1.1.7:
   version "1.1.7"
@@ -563,6 +574,10 @@ lazy-cache@^2.0.1, lazy-cache@^2.0.2:
   dependencies:
     set-getter "^0.1.0"
 
+lodash@3.x:
+  version "3.10.1"
+  resolved "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
+
 lodash@^4.0.0:
   version "4.17.4"
   resolved "https://npm.filiosoft.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
@@ -610,6 +625,22 @@ memoizee@^0.4.3:
     lru-queue "0.1"
     next-tick "1"
     timers-ext "0.1"
+
+mime-db@~1.30.0:
+  version "1.30.0"
+  resolved "https://registry.npmjs.org/mime-db/-/mime-db-1.30.0.tgz#74c643da2dd9d6a45399963465b26d5ca7d71f01"
+
+mime-types@^2.1.17:
+  version "2.1.17"
+  resolved "https://registry.npmjs.org/mime-types/-/mime-types-2.1.17.tgz#09d7a393f03e995a79f8af857b70a9e0ab16557a"
+  dependencies:
+    mime-db "~1.30.0"
+
+minimatch@3.0.3:
+  version "3.0.3"
+  resolved "https://registry.npmjs.org/minimatch/-/minimatch-3.0.3.tgz#2a4e4090b96b2db06a9d7df01055a62a77c9b774"
+  dependencies:
+    brace-expansion "^1.0.0"
 
 minimatch@^3.0.4:
   version "3.0.4"
@@ -804,6 +835,12 @@ readline-utils@^2.2.1:
     strip-color "^0.1.0"
     window-size "^1.0.0"
 
+recursive-readdir@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.npmjs.org/recursive-readdir/-/recursive-readdir-2.2.1.tgz#90ef231d0778c5ce093c9a48d74e5c5422d13a99"
+  dependencies:
+    minimatch "3.0.3"
+
 revalidator@0.1.x:
   version "0.1.8"
   resolved "https://registry.npmjs.org/revalidator/-/revalidator-0.1.8.tgz#fece61bfa0c1b52a206bd6b18198184bdd523a3b"
@@ -904,6 +941,17 @@ toggle-array@^1.0.1:
   resolved "https://registry.npmjs.org/toggle-array/-/toggle-array-1.0.1.tgz#cbf5840792bd5097f33117ae824c932affe87d58"
   dependencies:
     isobject "^3.0.0"
+
+underscore.string@2.3.x:
+  version "2.3.3"
+  resolved "https://registry.npmjs.org/underscore.string/-/underscore.string-2.3.3.tgz#71c08bf6b428b1133f37e78fa3a21c82f7329b0d"
+
+upath@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/upath/-/upath-1.0.0.tgz#b4706b9461ca8473adf89133d235689ca17f3656"
+  dependencies:
+    lodash "3.x"
+    underscore.string "2.3.x"
 
 url@0.10.3:
   version "0.10.3"

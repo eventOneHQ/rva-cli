@@ -25,5 +25,6 @@ program
   .command('start [name]', 'start a S3 review app')
   .command('stop [name]', 'stop a S3 review app')
   .command('init [baseName]', 'initialize a project with S3 review apps')
+  .command('publish [baseName]', 'initialize and upload a project with S3 review apps')
   .parse(process.argv);
 
