@@ -63,6 +63,16 @@ if (nameType) {
         pattern: /^(?=.{1,254}$)((?=[a-z0-9-]{1,63}\.)(xn--+)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}$/i,
         message: 'Base name must be a valid FQDN.',
         required: true
+      },
+      indexPage: {
+        description: 'Static website index document',
+        required: false,
+        default: 'index.html',
+      },
+      errorPage: {
+        description: 'Static website error document',
+        required: false,
+        default: 'error.html',
       }
     }
   };
