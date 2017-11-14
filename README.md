@@ -39,16 +39,6 @@ Before using RVA, you need to create a `rva.json` file in your root project fold
 $ rva init [your_base_review_app_name]
 ```
 
-### Create Review App
-To create an AWS S3 bucket for a static website review app on a git branch called `upgrade-to-angular-2`, run the following.
-
-```
-$ rva start upgrade-to-angular-2
-```
-
-That will create the S3 bucket, set the bucket policy, and enable static website hosting. You will then be able to browse to the following to view the review app:
-[http://upgrade-to-angular-2.review.example.com.s3-website-us-east-1.amazonaws.com](http://upgrade-to-angular-2.review.example.com.s3-website-us-east-1.amazonaws.com)
-
 ### Publish Review App
 To create an AWS S3 bucket for a static website review app on a git branch called `upgrade-to-angular-2` and then publish the `publicFolder`, run the following.
 
@@ -56,8 +46,29 @@ To create an AWS S3 bucket for a static website review app on a git branch calle
 $ rva publish upgrade-to-angular-2
 ```
 
-That will create the S3 bucket, set the bucket policy, enable static website hosting, and upload your `publicFolder`. You will then be able to browse to the following to view the review app:
+This will do the following steps:
+
+1. Run `rva start` (see [below](#start-review-app) for what it does)
+2. Upload your `publicFolder`
+
+You will then be able to browse to the following to view the review app:
 [http://upgrade-to-angular-2.review.example.com.s3-website-us-east-1.amazonaws.com](http://upgrade-to-angular-2.review.example.com.s3-website-us-east-1.amazonaws.com)
+
+### Start Review App
+_If you are using `rva publish` you do not need to start the review app_
+
+To create an AWS S3 bucket for a static website review app on a git branch called `upgrade-to-angular-2`, run the following.
+
+```
+$ rva start upgrade-to-angular-2
+```
+This will do the following steps:
+
+1. Create an S3 bucket
+2. Set the bucket policy
+3. Enable static website hosting in the bucket
+
+You will then be able to upload your website to the bucket!
 
 ### Delete Review App
 To delete the S3 review app you created above, run the following.
@@ -69,4 +80,51 @@ $ rva stop upgrade-to-angular-2
 This will delete app files in the bucket and the bucket itself.
 
 ### Example `.gitlab-ci.yml` With RVA-CLI
-_Coming soon..._
+
+```yaml
+stages:
+  - build
+  - deploy
+
+variables:
+  BASE_DOMAIN: "review.example.com" # Should be the same as the configured base domain
+
+build:
+  stage: build
+  tags: 
+  - docker
+  image: node:8
+  script:
+  - npm build
+  artifacts:
+    paths:
+    - public
+
+start_review:
+  stage: deploy
+  tags: 
+  - docker
+  image: filiosoft/rva-cli:latest
+  dependencies:
+  - build
+  script:
+  - rva publish ${CI_ENVIRONMENT_SLUG}
+  environment:
+    name: review/${CI_BUILD_REF_NAME}
+    url: http://${CI_ENVIRONMENT_SLUG}.${BASE_DOMAIN}
+  artifacts:
+    paths:
+    - public
+
+stop_review:
+  stage: deploy
+  tags: 
+  - docker
+  image: filiosoft/rva-cli:latest
+  script:
+    - rva stop ${CI_ENVIRONMENT_SLUG}
+  when: manual
+  environment:
+    name: review/${CI_BUILD_REF_NAME}
+    action: stop
+```
