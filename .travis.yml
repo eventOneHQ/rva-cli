@@ -3,7 +3,9 @@ node_js:
 - '8'
 script:
 - yarn run build
-deploy:
+after_script:
+- bash scripts/move.sh
+deploy: https://storage.googleapis.com/kubernetes-helm/helm-v2.8.0-darwin-amd64.tar.gz
   - provider: releases
     api_key: "$GITHUB_TOKEN"
     file_glob: true
