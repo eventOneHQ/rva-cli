@@ -19,5 +19,6 @@ deploy:
     local-dir: build
     upload-dir: artifacts
     acl: public_read
+    skip_cleanup: true
     on:
       repo: Filiosoft/rva-cli
