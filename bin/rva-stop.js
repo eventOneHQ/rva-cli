@@ -5,16 +5,17 @@ const program = require('commander');
 const fs = require('fs');
 const deleteBucket = require('../lib/deleteBucket');
 const path = require('path');
+const checkEnv = require('../lib/checkEnv');
 
 const configFile = path.resolve('rva.json');
+checkEnv();
 
-program
-  .parse(process.argv);
+program.parse(process.argv);
 const appName = program.args[0];
 const nameType = typeof appName === 'string';
 
 if (fs.existsSync(configFile) && nameType) {
-  fs.readFile(configFile, 'utf-8', function (err, data) {
+  fs.readFile(configFile, 'utf-8', (err, data) => {
     if (err) {
       throw err;
     }
@@ -22,13 +23,11 @@ if (fs.existsSync(configFile) && nameType) {
     const config = JSON.parse(data);
 
     console.log('Stoping review app...');
-    deleteBucket(config, appName)
-      .then((res) => {
-        console.log(`Review app ${res} stopped.`);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    deleteBucket(config, appName).then(app => {
+      console.log(`Review app ${app} stopped.`);
+    }).catch(err => {
+      console.log(err);
+    });
 
   });
 } else {

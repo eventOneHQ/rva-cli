@@ -7,52 +7,47 @@ const createBucket = require('../lib/createBucket');
 const putPolicy = require('../lib/putPolicy');
 const putWebsite = require('../lib/putWebsite');
 const path = require('path');
+const checkEnv = require('../lib/checkEnv');
 
 const configFile = path.resolve('rva.json');
+checkEnv();
 
-program
-  .parse(process.argv);
+program.parse(process.argv);
 const appName = program.args[0];
 const nameType = typeof appName === 'string';
 
 if (fs.existsSync(configFile) && nameType) {
-  fs.readFile(configFile, 'utf-8', function (err, data) {
+  fs.readFile(configFile, 'utf-8', (err, data) => {
     if (err) {
       throw err;
     }
 
     const config = JSON.parse(data);
 
-    createBucket(config, appName)
-      .then((res) => {
-        // create bucket success
-        console.log(`${res} has been started!`);
+    createBucket(config, appName).then(app => {
+      // create bucket success
+      console.log(`${app} has been started!`);
 
-        putPolicy(config, appName)
-          .then((res) => {
-            // put policy success
-            console.log(res);
-            putWebsite(config, appName)
-              .then((res) => {
-                // put website success
-                console.log(res);
+      putPolicy(config, appName).then(polRes => {
+        // put policy success
+        console.log(polRes);
+        putWebsite(config, appName).then(webRes => {
+          // put website success
+          console.log(webRes);
 
-                console.log(clc.green(`\nReview app started. Visit http://${appName+'.'+config.baseName}.s3-website-us-east-1.amazonaws.com`));
-              })
-              .catch((err) => {
-                // catch put website
-                console.log(err);
-              });
-          })
-          .catch((err) => {
-            // catch put policy
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        // catch create bucket
+          console.log(clc.green(`\nReview app started. Visit http://${appName}.${config.baseName}.s3-website-us-east-1.amazonaws.com`));
+        }).catch(err => {
+          // catch put website
+          console.log(err);
+        });
+      }).catch(err => {
+        // catch put policy
         console.log(err);
       });
+    }).catch(err => {
+      // catch create bucket
+      console.log(err);
+    });
 
   });
 } else {

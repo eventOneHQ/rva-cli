@@ -11,16 +11,15 @@ const configFile = path.resolve('rva.json');
 
 let obj = {};
 
-program
-  .parse(process.argv);
+program.parse(process.argv);
 const baseName = program.args[0];
 const nameType = typeof baseName === 'string';
 
 console.log('Initializing project with S3 review apps...');
 
-function writeDoc(input) {
+const writeDoc = input => {
   const json = JSON.stringify(input);
-  fs.writeFile(configFile, json, 'utf8', (err) => {
+  fs.writeFile(configFile, json, 'utf8', err => {
     if (err) {
       return console.log(err);
     }
@@ -32,13 +31,13 @@ function writeDoc(input) {
   });
 }
 
-function writeJson(input) {
+const writeJson = input => {
   const configFile = path.resolve('rva.json');
   if (fs.existsSync(configFile)) {
     console.log(clc.yellow('rva.json already exists in the current working directory. Overwrite?'));
 
     const confirm = new PromptConfirm('Overwrite rva.json?');
-    confirm.ask(function (yes) {
+    confirm.ask(yes => {
       if (yes) {
         writeDoc(input);
       } else {
@@ -67,21 +66,21 @@ if (nameType) {
       publicFolder: {
         description: 'Public folder to upload to S3',
         required: true,
-        default: 'public',
+        default: 'public'
       },
       indexPage: {
         description: 'Static website index document',
         required: false,
-        default: 'index.html',
+        default: 'index.html'
       },
       errorPage: {
         description: 'Static website error document (use index.html for SPAs)',
         required: false,
-        default: 'error.html',
+        default: 'error.html'
       }
     }
   };
-  prompt.get(schema, function (err, result) {
+  prompt.get(schema, (err, result) => {
     obj.baseName = result.baseName;
     writeJson(obj);
   });
