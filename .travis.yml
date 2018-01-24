@@ -3,7 +3,6 @@ node_js:
 - '8'
 script:
 - yarn run build
-after_script:
 - bash scripts/move.sh
 deploy:
   - provider: releases
