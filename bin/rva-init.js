@@ -75,7 +75,7 @@ if (nameType) {
         default: 'index.html',
       },
       errorPage: {
-        description: 'Static website error document',
+        description: 'Static website error document (use index.html for SPAs)',
         required: false,
         default: 'error.html',
       }

@@ -7,14 +7,15 @@
     "rva": "bin/rva.js"
   },
   "scripts": {
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "build": "pkg . --out-path build/"
   },
   "repository": "filiosoft/rva-cli",
   "bugs": {
     "url": "https://github.com/filiosoft/rva-cli/issues",
     "email": "team@filiosoft.com"
   },
-  "author": "Filiosoft <Team@Filiosoft.com>",
+  "author": "Filiosoft Open Source <opensource@filiosoft.com>",
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.62.0",
@@ -25,5 +26,15 @@
     "prompt-confirm": "^1.1.1",
     "recursive-readdir": "^2.2.1",
     "upath": "^1.0.0"
+  },
+  "pkg": {
+    "scripts": [
+      "bin/**/*.js",
+      "lib/**/*.js"
+    ],
+    "assets": "logo.txt"
+  },
+  "devDependencies": {
+    "pkg": "^4.3.0"
   }
 }
