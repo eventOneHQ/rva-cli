@@ -1,13 +1,23 @@
 language: node_js
 node_js:
-  - "8"
+- '8'
 script:
 - yarn run build
 deploy:
-  provider: releases
-  api_key: "$GITHUB_TOKEN"
-  file_glob: true
-  file: "build/*"
-  skip_cleanup: true
-  on:
-    tags: true
+  - provider: releases
+    api_key: "$GITHUB_TOKEN"
+    file_glob: true
+    file: "build/*"
+    skip_cleanup: true
+    on:
+      tags: true
+  - provider: s3
+    access_key_id: AKIAJ2GZZVEKNOJ7YHGA
+    secret_access_key:
+      secure: OTa5WwNGFdJcQQVqewGMR7fu9ziYR64mF4Wrn+e82/GGixl5eoRs9C6z+VGWvUYORp3DtCUKr+OiqAvgz2GukgqbaGmoU6hC46JSSIrjfdjairqkR8yfxdc5enZvXCUIfV9zGjM4VSzwUkN1xgzB4lAZJ7eTYUH9DSGw+8SSTQGs0m/2F2Il0UDbxiDQEytGGC41wJ5xtDovaC617YI7uPe/WK2bXRE3sRKAMywlSN3W/P6eBvdEJaIZnH8wPPusXoquX80BASo6SQ/zyXdNeTJNkAnvYJ95Aprqg3VPxn8mzw4QYXxcKjBzhDN8DDF8LiZ1CI3rbxQwmgsPGkO+2lglE3qrWmZTyowlukzxUmcqeaQ+HlZ3xKTczAga+xk6mR4FQjqnoZ6GRCfjf3WpGRK6CQQeu2CXT/k/VdxyYBUlrnilyZLdR1PBFcIPzqrn10cmwhEnJDNF1U2rTtsHPPfdeipoTFDTRQx/GlPK+Wzb5+2tBWhxOzRm/ctdV9+uNZNEwGTOBw5oi/OPTacaPi+RrYVzjlGefLI4BRanzZIOd1xFsoNacx0TGOyV2WjzxWdwQfKIhxPDNa7wub4VCw09jEGxj+LkD2nAmgyhtOfi+FbvJ2G907urDdTd4JVE908L1BbV89qnf9cFjL6QBzznlzhJjHdp8BXqriY+S+g=
+    bucket: cdn.filiosoft.com
+    local-dir: build
+    upload-dir: artifacts
+    acl: public_read
+    on:
+      repo: Filiosoft/rva-cli
