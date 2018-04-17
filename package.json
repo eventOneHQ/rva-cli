@@ -15,6 +15,7 @@
     "url": "https://github.com/filiosoft/rva-cli/issues",
     "email": "team@filiosoft.com"
   },
+  "homepage": "https://filiosoft.org/rva-cli",
   "author": "Filiosoft Open Source <opensource@filiosoft.com>",
   "license": "MIT",
   "dependencies": {
