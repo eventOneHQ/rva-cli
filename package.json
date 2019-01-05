@@ -10,13 +10,13 @@
     "postversion": "git push && git push --tags",
     "build": "pkg . --out-path build/"
   },
-  "repository": "filiosoft/rva-cli",
+  "repository": "eventOneHQ/rva-cli",
   "bugs": {
-    "url": "https://github.com/filiosoft/rva-cli/issues",
-    "email": "team@filiosoft.com"
+    "url": "https://github.com/eventOneHQ/rva-cli/issues",
+    "email": "developers@event1.io"
   },
-  "homepage": "https://filiosoft.org/rva-cli",
-  "author": "Filiosoft Open Source <opensource@filiosoft.com>",
+  "homepage": "https://oss.filiosoft.com/rva-cli",
+  "author": "eventOne Labs <opensource@event1.io>",
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.62.0",
