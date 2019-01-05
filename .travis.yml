@@ -22,7 +22,7 @@ deploy:
     acl: public_read
     skip_cleanup: true
     on:
-      repo: Filiosoft/rva-cli
+      repo: eventOneHQ/rva-cli
       tags: true
       all_branches: true
-      
+

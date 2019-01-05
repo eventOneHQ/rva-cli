@@ -1,3 +1,3 @@
 FROM node:8
 
-RUN yarn global add @filiosoft/rva-cli
+RUN npm i -g @filiosoft/rva-cli

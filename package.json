@@ -19,14 +19,14 @@
   "author": "eventOne Labs <opensource@event1.io>",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.62.0",
+    "aws-sdk": "^2.384.0",
     "cli-color": "^1.2.0",
     "commander": "^2.9.0",
     "mime-types": "^2.1.17",
     "prompt": "^1.0.0",
     "prompt-confirm": "^1.1.1",
     "recursive-readdir": "^2.2.1",
-    "upath": "^1.0.0"
+    "upath": "^1.1.0"
   },
   "pkg": {
     "scripts": [
@@ -36,6 +36,6 @@
     "assets": "logo.txt"
   },
   "devDependencies": {
-    "pkg": "^4.3.0"
+    "pkg": "^4.3.5"
   }
 }
